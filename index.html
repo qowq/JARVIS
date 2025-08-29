@@ -24,5 +24,23 @@
     </video>
     <div id="root"></div>
     <script type="module" src="index.tsx"></script>
+    <script>
+      // Slow down background video and fix mobile viewport height
+      document.addEventListener('DOMContentLoaded', () => {
+        const video = document.getElementById('background-video');
+        if (video) {
+          video.playbackRate = 0.75; // Slows down to 75% speed
+        }
+
+        // Fix 100vh issue on mobile browsers
+        const setVh = () => {
+          const vh = window.innerHeight * 0.01;
+          document.documentElement.style.setProperty('--vh', `${vh}px`);
+        };
+
+        setVh();
+        window.addEventListener('resize', setVh);
+      });
+    </script>
 </body>
 </html>

@@ -48,8 +48,8 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  padding: 16px;
+  height: 100vh; /* Fallback for older browsers */
+  height: calc(var(--vh, 1vh) * 100);
 }
 
 .chat-container {
@@ -300,4 +300,12 @@ header h1 {
 
 #file-input {
   display: none;
+}
+
+@media (max-width: 768px) {
+  .chat-container {
+    border-radius: 0;
+    border: none;
+    box-shadow: none;
+  }
 }
