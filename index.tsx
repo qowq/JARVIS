@@ -75,6 +75,25 @@ const MessageInput: React.FC<{
   const fileInputRef = useRef<HTMLInputElement>(null);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
 
+  useEffect(() => {
+    const textarea = textareaRef.current;
+    if (!textarea) return;
+
+    const handleBlur = () => {
+      // When the keyboard is dismissed on mobile, this helps reset the view
+      // and prevent the title from being permanently scrolled out of view.
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+      }, 100); 
+    };
+
+    textarea.addEventListener('blur', handleBlur);
+
+    return () => {
+      textarea.removeEventListener('blur', handleBlur);
+    };
+  }, []);
+
   const handleImageChange = (e: ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
       const file = e.target.files[0];
