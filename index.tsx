@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect, ChangeEvent, FormEvent } from 'react';
 import { createRoot } from 'react-dom/client';
 
-const WEBHOOK_URL = 'https://hamzeh1128.app.n8n.cloud/webhook-test/ff226f9c-147e-4f50-8049-abdec8bf1224';
+const WEBHOOK_URL = 'https://hamzeh1128.app.n8n.cloud/webhook/ff226f9c-147e-4f50-8049-abdec8bf1224';
 
 // --- Type Definitions ---
 type MessagePart =
